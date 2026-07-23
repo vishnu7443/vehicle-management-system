@@ -1,18 +1,26 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { LayoutDashboard, Truck, PlusCircle, ShieldCheck } from 'lucide-react';
+import { LayoutDashboard, Truck, PlusCircle, ShieldCheck, X } from 'lucide-react';
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen, onClose }) => {
   return (
-    <aside className="sidebar">
-      <div className="sidebar-logo">
-        <Truck size={28} color="#3b82f6" />
-        <span>VMS Hub</span>
+    <aside className={`sidebar ${isOpen ? 'mobile-open' : ''}`}>
+      <div className="sidebar-header">
+        <div className="sidebar-logo">
+          <Truck size={28} color="#3b82f6" />
+          <span>VMS Hub</span>
+        </div>
+        
+        {/* Mobile close button */}
+        <button className="sidebar-close-btn" onClick={onClose} aria-label="Close menu">
+          <X size={20} />
+        </button>
       </div>
 
       <nav className="sidebar-nav">
         <NavLink
           to="/dashboard"
+          onClick={onClose}
           className={({ isActive }) => `sidebar-link ${isActive ? 'active' : ''}`}
         >
           <LayoutDashboard size={20} />
@@ -21,6 +29,7 @@ const Sidebar = () => {
 
         <NavLink
           to="/vehicles"
+          onClick={onClose}
           className={({ isActive }) => `sidebar-link ${isActive ? 'active' : ''}`}
         >
           <Truck size={20} />
@@ -29,6 +38,7 @@ const Sidebar = () => {
 
         <NavLink
           to="/add-vehicle"
+          onClick={onClose}
           className={({ isActive }) => `sidebar-link ${isActive ? 'active' : ''}`}
         >
           <PlusCircle size={20} />
@@ -36,7 +46,7 @@ const Sidebar = () => {
         </NavLink>
       </nav>
 
-      <div style={{ marginTop: 'auto', padding: '1rem 0.5rem', borderTop: '1px solid var(--bg-card-border)', fontSize: '0.8rem', color: 'var(--text-dim)', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+      <div className="sidebar-footer">
         <ShieldCheck size={16} color="#10b981" />
         <span>System Status: Online</span>
       </div>
