@@ -8,7 +8,7 @@ const Navbar = ({ onToggleSidebar, isMobileOpen, isCollapsed }) => {
   return (
     <header className="navbar">
       <div className="navbar-left">
-        {/* Universal Menu Toggle Button (Laptops, Desktops, Tablets & Mobile) */}
+        {/* Sidebar Toggle Button */}
         <button
           className="sidebar-toggle-btn"
           onClick={onToggleSidebar}
@@ -19,9 +19,9 @@ const Navbar = ({ onToggleSidebar, isMobileOpen, isCollapsed }) => {
         </button>
 
         <div className="navbar-title">
-          <Truck size={24} color="#60a5fa" />
-          <span className="navbar-title-text">Vehicle Management System</span>
-          <span className="navbar-title-short">VMS</span>
+          <Truck size={22} color="#3b82f6" className="navbar-logo-icon" />
+          <span className="brand-text-desktop">Vehicle Management System</span>
+          <span className="brand-text-mobile">VMS</span>
         </div>
       </div>
 
@@ -29,16 +29,16 @@ const Navbar = ({ onToggleSidebar, isMobileOpen, isCollapsed }) => {
         {user && (
           <>
             <div className="user-badge">
-              <User size={16} color="#94a3b8" />
-              <span className="user-name">{user.username}</span>
+              <User size={15} color="#94a3b8" />
+              <span className="user-name-desktop">{user.username}</span>
               <span className={`role-pill ${user.role === 'Admin' ? 'role-admin' : 'role-staff'}`}>
                 {user.role}
               </span>
             </div>
 
             <button onClick={logout} className="btn btn-secondary btn-sm navbar-logout" title="Log out">
-              <LogOut size={16} />
-              <span className="logout-text">Logout</span>
+              <LogOut size={15} />
+              <span className="logout-text-desktop">Logout</span>
             </button>
           </>
         )}
