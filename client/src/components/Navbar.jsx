@@ -2,19 +2,20 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { Truck, LogOut, User, Menu, X } from 'lucide-react';
 
-const Navbar = ({ onToggleMobile, isMobileOpen }) => {
+const Navbar = ({ onToggleSidebar, isMobileOpen, isCollapsed }) => {
   const { user, logout } = useContext(AuthContext);
 
   return (
     <header className="navbar">
       <div className="navbar-left">
-        {/* Mobile menu toggle button */}
+        {/* Universal Menu Toggle Button (Laptops, Desktops, Tablets & Mobile) */}
         <button
-          className="mobile-menu-btn"
-          onClick={onToggleMobile}
-          aria-label="Toggle navigation menu"
+          className="sidebar-toggle-btn"
+          onClick={onToggleSidebar}
+          aria-label="Toggle sidebar menu"
+          title="Toggle Sidebar"
         >
-          {isMobileOpen ? <X size={22} /> : <Menu size={22} />}
+          {isMobileOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
 
         <div className="navbar-title">

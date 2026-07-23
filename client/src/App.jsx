@@ -13,20 +13,39 @@ import EditVehicle from './pages/EditVehicle';
 import VehicleDetails from './pages/VehicleDetails';
 
 const MainLayout = ({ children }) => {
+  // Mobile drawer state
   const [mobileOpen, setMobileOpen] = useState(false);
+  // Desktop collapsed state
+  const [desktopCollapsed, setDesktopCollapsed] = useState(false);
 
-  const toggleMobile = () => setMobileOpen(!mobileOpen);
+  const toggleSidebar = () => {
+    // On small screens, toggle mobile drawer. On desktop, toggle collapsed mode.
+    if (window.innerWidth <= 992) {
+      setMobileOpen(!mobileOpen);
+    } else {
+      setDesktopCollapsed(!desktopCollapsed);
+    }
+  };
+
   const closeMobile = () => setMobileOpen(false);
 
   return (
-    <div className="app-container">
-      {/* Sidebar overlay backdrop for mobile */}
+    <div className={`app-container ${desktopCollapsed ? 'sidebar-collapsed-layout' : ''}`}>
+      {/* Mobile backdrop */}
       {mobileOpen && <div className="sidebar-backdrop" onClick={closeMobile}></div>}
 
-      <Sidebar isOpen={mobileOpen} onClose={closeMobile} />
+      <Sidebar
+        isMobileOpen={mobileOpen}
+        isCollapsed={desktopCollapsed}
+        onClose={closeMobile}
+      />
 
       <div className="main-content">
-        <Navbar onToggleMobile={toggleMobile} isMobileOpen={mobileOpen} />
+        <Navbar
+          onToggleSidebar={toggleSidebar}
+          isMobileOpen={mobileOpen}
+          isCollapsed={desktopCollapsed}
+        />
         {children}
       </div>
     </div>

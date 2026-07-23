@@ -56,12 +56,12 @@ const Login = () => {
   };
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1.5rem' }}>
-      <div className="card" style={{ maxWidth: '440px', width: '100%', padding: '2.5rem 2rem' }}>
+    <div className="login-container">
+      <div className="card login-card">
         
         {/* Brand Header */}
         <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-          <div style={{ display: 'inline-flex', padding: '0.85rem', background: 'rgba(59, 130, 246, 0.15)', borderRadius: '16px', marginBottom: '1rem', border: '1px solid rgba(59, 130, 246, 0.3)' }}>
+          <div className="login-brand-icon">
             <Truck size={36} color="#3b82f6" />
           </div>
           <h1 style={{ fontSize: '1.65rem', fontWeight: 800, marginBottom: '0.35rem' }}>Vehicle Ops Manager</h1>
@@ -121,7 +121,7 @@ const Login = () => {
           {isRegister && (
             <div className="form-group">
               <label className="form-label">Full Name</label>
-              <div className="search-input-wrapper">
+              <div className="input-with-icon">
                 <User size={18} color="#94a3b8" />
                 <input
                   type="text"
@@ -136,7 +136,7 @@ const Login = () => {
 
           <div className="form-group">
             <label className="form-label">Email Address</label>
-            <div className="search-input-wrapper">
+            <div className="input-with-icon">
               <Mail size={18} color="#94a3b8" />
               <input
                 type="email"
@@ -150,7 +150,7 @@ const Login = () => {
 
           <div className="form-group">
             <label className="form-label">Password</label>
-            <div className="search-input-wrapper">
+            <div className="input-with-icon">
               <Lock size={18} color="#94a3b8" />
               <input
                 type="password"
@@ -191,7 +191,7 @@ const Login = () => {
           <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: '0.75rem', fontWeight: 600 }}>
             Demo Account Credentials
           </p>
-          <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center' }}>
+          <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <button
               onClick={() => handleFillDemo('admin@vms.com', 'admin123')}
               className="btn btn-secondary btn-sm"
